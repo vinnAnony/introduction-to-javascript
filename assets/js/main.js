@@ -84,3 +84,50 @@ function inheritanceDemo() {
     let myPhone = new Model(prompt("Enter phone brand"),prompt("Enter phone model"));
     alert("Your phone is " + myPhone.displayModel());
 }
+
+
+
+
+let debts = [
+    {id:1, name: "Madeni", amount:1000,},
+    {id:2, name: "Kijana", amount:230,},
+    {id:3, name: "Boyii", amount:340,},
+];
+console.log(debts[0].name);
+
+function createDebt(debtId,debtorName,debtAmount){
+    debts.push({id:debtId,name:debtorName,amount:debtAmount});
+    console.log("Debt added!")
+    console.log(debts);
+}
+
+//createDebt(40,"Bazeng",100)
+
+function displayDebts(){
+    debts.forEach(function(item){
+        return console.log(item.name + " owes " + item.amount);
+    })
+}
+
+//displayDebts();
+
+function updateDebt(id,newAmount){
+    let debtObj = debts.find(function(debt){
+        if(debt.id ===id)debt.amount = newAmount
+    })
+    displayDebts()
+}
+
+//updateDebt(2,500);
+
+
+function deleteDebt(id) {
+    let deleteIndex = debts.findIndex(function (debt) {
+        return debt.id === id;
+    });
+
+    debts.splice(deleteIndex,1);
+    displayDebts()
+}
+
+deleteDebt(3);

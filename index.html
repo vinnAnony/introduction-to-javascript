@@ -2,22 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javascript Intro</title>
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body class="wrapper">
 
 <div class="container">
-    <input class="myButton" type="button" value="Function & Closure" onclick="startDemo()">
-    <input class="myButton" type="button" value="Encapsulation" onclick="encapsulationDemo()">
-    <input class="myButton" type="button" value="Prototypes" onclick="protoDemo()">
-    <input class="myButton" type="button" value="Inheritance" onclick="inheritanceDemo()">
+<!--    <input class="myButton" type="button" value="Function & Closure" onclick="startDemo()">-->
+<!--    <input class="myButton" type="button" value="Encapsulation" onclick="encapsulationDemo()">-->
+<!--    <input class="myButton" type="button" value="Prototypes" onclick="protoDemo()">-->
+<!--    <input class="myButton" type="button" value="Inheritance" onclick="inheritanceDemo()">-->
+
+    <div id="form-main">
+        <div id="form-div">
+            <form class="form" id="debtForm" onsubmit="submitForm();">
+                <p class="name">
+                    <input name="name" type="text" placeholder="Full Name" id="fullName" />
+                </p>
+
+                <p class="email">
+                    <input name="amount" type="number"  id="amount" placeholder="Amount" />
+                </p>
+
+                <div class="submit">
+                    <input class="button-blue" type="submit" value="Add"/>
+                </div>
+            </form>
+        </div>
+
 </div>
 
-<div>
-    <h5>Response</h5>
-    <p id="myResponse"></p>
-</div>
+    <div class = "myTable">
+        <table id="debtList">
+            <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Amount</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

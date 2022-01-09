@@ -1,133 +1,64 @@
-//enabling strict mode
-// "use strict";
-//     try {
-//         let let = 9;
-//     }catch (e) {
-//         alert("Strict mode error");
-//     }
-
-//Use of functions and closure example
-function startDemo() {
-    let firstName = prompt("Enter first name:", "Not");
-    let lastName = prompt("Enter last name:", "Provided");
-
-    function showFullName() {
-        alert("Welcome "+firstName+" "+lastName);
-    }
-
-    return showFullName();
-}
-let demo = startDemo();
-console.log(demo);
-
-
-//Prototype example
-function Investor(firstName, lastName) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-}
-
-Investor.prototype.email = "Email not set";
-
-function protoDemo() {
-    let investorDemo = new Investor(
-        prompt("Enter investor's first name"),
-        prompt("Enter investor's last name"));
-    if (investorDemo.email === "Email not set"){
-        investorDemo.email = prompt("Enter investor's email");
-    }
-    alert(investorDemo.email);
-}
-
-//Encapsulation example
-class Driver {
-    constructor(_name,_rating) {
-        let name = _name;
-        let rating = _rating;
-
-        this.getDriverName = function() {
-            return name;
+let selectedRow = null;
+function submitForm(e){
+    event.preventDefault();
+    let fName = document.getElementById("fullName").value;
+    let dAmount = document.getElementById("fullName").value;
+    if ( dAmount!== "") {
+        let formData = readFormData();
+        if (selectedRow === null) {
+            createDebt(formData);
+        } else {
+            updateDebt(formData)
         }
-
-        this.getDriverRating = function() {
-            return rating;
-        }
+        resetForm();
     }
-
-}
-
-function encapsulationDemo() {
-    let driver = new Driver(prompt("Enter driver name"),prompt("Rate the driver(1-10)"));
-
-    alert(driver.getDriverName()+"'s rating is "+driver.getDriverRating())
-}
-
-//Inheritance example
-class Phone {
-    constructor(brand) {
-        this.phoneName = brand;
-    }
-    displayBrand(){
-        return this.phoneName;
+    else {
+        alert("Invalid input")
     }
 }
-class Model extends Phone{
-    constructor(brand,model) {
-        super(brand);
-        this.model = model;
+
+
+function readFormData(){
+    let formData = {};
+    formData["fullName"] = document.getElementById("fullName").value;
+    formData["amount"] = document.getElementById("amount").value;
+    return formData;
+}
+
+
+function createDebt(data){
+    let table = document.getElementById("debtList").getElementsByTagName('tbody')[0];
+    let newRow = table.insertRow(table.length);
+    let cell1 = newRow.insertCell(0);
+    cell1.innerHTML = data.fullName;
+    let cell2 = newRow.insertCell(1);
+    cell2.innerHTML = data.amount;
+    let cell3 = newRow.insertCell(2);
+    cell3.innerHTML = `<a class="tblBtn" onClick="onEdit(this)">Edit</a>
+                       <a class="tblBtn" onClick="onDelete(this)">Delete</a>`;
+}
+
+// To Reset the data of fill input
+function resetForm(){
+    document.getElementById('fullName').value = '';
+    document.getElementById('amount').value = '';
+    selectedRow = null;
+}
+
+// For Edit operation
+function onEdit(td){
+    selectedRow = td.parentElement.parentElement;
+    document.getElementById('fullName').value = selectedRow.cells[0].innerHTML;
+    document.getElementById('amount').value = selectedRow.cells[1].innerHTML;
+}
+function updateDebt(formData){
+    selectedRow.cells[0].innerHTML = formData.fullName;
+    selectedRow.cells[1].innerHTML = formData.amount;
+}
+function onDelete(td){
+    if(confirm('Are you sure you want to delete this record?')){
+        row = td.parentElement.parentElement;
+        document.getElementById('debtList').deleteRow(row.rowIndex);
+        resetForm();
     }
-    displayModel() {
-        return this.displayBrand() +" "+this.model;
-    }
 }
-function inheritanceDemo() {
-    let myPhone = new Model(prompt("Enter phone brand"),prompt("Enter phone model"));
-    alert("Your phone is " + myPhone.displayModel());
-}
-
-
-
-
-let debts = [
-    {id:1, name: "Madeni", amount:1000,},
-    {id:2, name: "Kijana", amount:230,},
-    {id:3, name: "Boyii", amount:340,},
-];
-console.log(debts[0].name);
-
-function createDebt(debtId,debtorName,debtAmount){
-    debts.push({id:debtId,name:debtorName,amount:debtAmount});
-    console.log("Debt added!")
-    console.log(debts);
-}
-
-//createDebt(40,"Bazeng",100)
-
-function displayDebts(){
-    debts.forEach(function(item){
-        return console.log(item.name + " owes " + item.amount);
-    })
-}
-
-//displayDebts();
-
-function updateDebt(id,newAmount){
-    let debtObj = debts.find(function(debt){
-        if(debt.id ===id)debt.amount = newAmount
-    })
-    displayDebts()
-}
-
-//updateDebt(2,500);
-
-
-function deleteDebt(id) {
-    let deleteIndex = debts.findIndex(function (debt) {
-        return debt.id === id;
-    });
-
-    debts.splice(deleteIndex,1);
-    displayDebts()
-}
-
-deleteDebt(3);

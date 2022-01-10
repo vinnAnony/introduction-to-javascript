@@ -2,8 +2,8 @@ let selectedRow = null;
 function submitForm(e){
     event.preventDefault();
     let fName = document.getElementById("fullName").value;
-    let dAmount = document.getElementById("fullName").value;
-    if ( dAmount!== "") {
+    let dAmount = document.getElementById("amount").value;
+    if (fName !== "" || dAmount!== "") {
         let formData = readFormData();
         if (selectedRow === null) {
             createDebt(formData);

@@ -1,9 +1,9 @@
 let selectedRow = null;
 function submitForm(e){
     event.preventDefault();
-    let fName = document.getElementById("fullName").value;
-    let dAmount = document.getElementById("amount").value;
-    if (fName !== "" || dAmount!== "") {
+    let fName = document.getElementById("fullName");
+    let dAmount = document.getElementById("amount");
+    if (fName && dAmount && fName.value && dAmount.value) {
         let formData = readFormData();
         if (selectedRow === null) {
             createDebt(formData);
@@ -13,7 +13,7 @@ function submitForm(e){
         resetForm();
     }
     else {
-        alert("Invalid input")
+        alert("Fill the required fields!")
     }
 }
 
@@ -62,3 +62,81 @@ function onDelete(td){
         resetForm();
     }
 }
+
+//Promise
+const myPromise = new Promise(function(myResolve, myReject) {
+    console.log("Promise run...");
+    //throw new Error('Some error has occurred');
+    //myResolve('Success');
+    myReject('Rejected');
+})
+
+myPromise
+    .then(function(successMessage) {
+        console.log(successMessage);
+    }, function(errorMessage) {
+        //error handler function is invoked
+        console.log(errorMessage);
+
+    })
+    .then(() => {
+        throw new Error('Something failed');
+        //This will not be logged because an error is thrown
+        //Therefore will skip to the catch
+        console.log("Error thrown");
+    })
+    .catch(function(errorMessage) {
+        console.log(errorMessage);
+    });
+
+
+//Inbuilt event
+const searchTxt = document.getElementById('searchMe');
+
+searchTxt.addEventListener('keyup', () => {
+    console.log(searchTxt.value)
+});
+
+
+
+//Custom event (Event)
+//Assign an event
+const customEvent1 = new Event("shout");
+const customEvnt1Btn = document.getElementById('customEvent1Btn');
+
+//Trigger the event listener
+customEvnt1Btn.addEventListener("shout", () => {
+    console.log("Let's get loud!")
+});
+
+//Dispatch the event
+customEvnt1Btn.addEventListener("click", () => {
+    customEvnt1Btn.dispatchEvent(customEvent1);
+});
+
+
+
+//Custom event (Custom Event)
+const customEvnt2Btn = document.getElementById('customEvent2Btn');
+
+const myCustom = new CustomEvent('vinn', {
+    detail: {
+        title: "Vinn's event"
+    }
+});
+
+customEvnt2Btn.addEventListener('vinn', (e) => {
+    console.log(e.detail.title);
+});
+
+customEvnt2Btn.addEventListener('click', () => {
+    customEvnt2Btn.dispatchEvent(myCustom);
+});
+
+
+//Dynamic typing
+let a = 10;
+console.log("Dynamic before: " + a);
+
+a = "abc"
+console.log("Dynamic after: " +a);

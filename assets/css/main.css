@@ -132,6 +132,11 @@ input[type=button]:hover {
     cursor: pointer;
 }
 
+.eventBtn{
+    width: auto;
+    margin-top: 20px;
+}
+
 @media only screen and (max-width: 580px) {
     #form-div{
         left: 3%;

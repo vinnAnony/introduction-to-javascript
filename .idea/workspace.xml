@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b0297cb-121a-4b38-8852-3d140044ff1d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +70,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1641549736478</updated>
-      <workItem from="1641549738138" duration="33714000" />
+      <workItem from="1641549738138" duration="34447000" />
     </task>
     <servers />
   </component>
@@ -84,6 +82,10 @@
       <screen x="0" y="23" width="1280" height="710" />
     </state>
     <state x="100" y="123" width="1080" height="508" key="DiffContextDialog/0.23.1280.710@0.23.1280.710" timestamp="1641726198432" />
+    <state x="461" y="307" key="NewPhpFileDialog" timestamp="1641794346994">
+      <screen x="0" y="23" width="1280" height="713" />
+    </state>
+    <state x="461" y="307" key="NewPhpFileDialog/0.23.1280.713@0.23.1280.713" timestamp="1641794346994" />
     <state x="149" y="23" width="982" height="708" key="SettingsEditor" timestamp="1641721752564">
       <screen x="0" y="23" width="1280" height="708" />
     </state>

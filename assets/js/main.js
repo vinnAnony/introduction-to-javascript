@@ -64,11 +64,12 @@ function onDelete(td){
 }
 
 //Promise
-const myPromise = new Promise(function(myResolve, myReject) {
+let innie = 3;
+const myPromise = new Promise(function(resolve, reject) {
     console.log("Promise run...");
-    //throw new Error('Some error has occurred');
-    //myResolve('Success');
-    myReject('Rejected');
+    if (innie === 1) resolve("Huraay, we're good")
+    else if (innie === 2) reject("Oops, we have been rejected")
+    else throw new Error('Promise error has occurred');
 })
 
 myPromise
